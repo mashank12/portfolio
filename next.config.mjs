@@ -16,10 +16,14 @@ const nextConfig = {
   output: "export",
   reactStrictMode: true,
   images: {
-    unoptimized: true,
+    loader: "custom",
+    loaderFile: "./src/lib/image-loader.ts",
   },
   basePath: basePath || undefined,
   trailingSlash: true,
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
 };
 
 export default nextConfig;
