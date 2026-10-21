@@ -7,6 +7,8 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
 export const metadata: Metadata = {
   title: "Mariia Velykodna - 3D Artist & Creative Director",
   description:
@@ -14,18 +16,18 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "/icon-light-32x32.png",
+        url: `${basePath}/icon-light-32x32.png`,
         media: "(prefers-color-scheme: light)",
       },
       {
-        url: "/icon-dark-32x32.png",
+        url: `${basePath}/icon-dark-32x32.png`,
         media: "(prefers-color-scheme: dark)",
       },
       {
-        url: "/icon.ico",
+        url: `${basePath}/icon.ico`,
       },
     ],
-    apple: "/apple-icon.png",
+    apple: `${basePath}/apple-icon.png`,
   },
 };
 
