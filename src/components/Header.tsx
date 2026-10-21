@@ -22,6 +22,12 @@ export function Header() {
         </Link>
         <Link
           className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+          href="#featured"
+        >
+          Case Studies
+        </Link>
+        <Link
+          className="text-sm text-muted-foreground hover:text-foreground transition-colors"
           href="#projects"
         >
           Projects
