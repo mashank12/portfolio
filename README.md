@@ -17,10 +17,11 @@ Frontend portfolio ported from `mariia-velykodna.vercel.app`, extended with addi
 - **Solutions / Software:** Tool showcase grid (Maya, ZBrush, Illustrator, Krita, Photoshop, Substance, Blender, Figma).
 - **About:** Personal statement and contact link.
 - **Featured Case Studies:**
-  - **SecureID:** Improving User Trust Through Security Notifications (Figma case study).
-  - **Smart Home:** Interactive Mobile UI & Icon Component System across 3 sizes ([GitHub](https://github.com/mashank12/smart-home)).
+  - **Habi:** Habit tracker concept shown through light and dark theme screenshots captured from `../personal/habbits`.
   - **DriveSync (Climate Control):** Connected Car Climate Control, Design System, Onboarding Flow & Micro-Animations ([GitHub](https://github.com/mashank12/accenture-task)).
-  - Interactive category filter pills (`All`, `SecureID`, `Smart Home`, `DriveSync`).
+  - **SecureID:** Improving User Trust Through Security Notifications (Figma case study).
+  - **Smart Home:** Interactive Mobile UI & Icon Component System across 3 sizes, with the supplied mobile UI image ([GitHub](https://github.com/mashank12/smart-home)).
+  - Interactive category filter pills (`All`, `Habi`, `DriveSync`, `SecureID`, `Smart Home`).
 - **Featured 3D Projects:** ArtStation gallery card grid with hover animations.
 - **Footer:** Social links, navigation, and direct email contact.
 

@@ -15,6 +15,7 @@ export interface CaseStudySlide {
 export interface FeaturedProjectItem {
   id: string;
   tag: string;
+  filterLabel: string;
   title: string;
   description: string;
   link: string;
@@ -25,57 +26,40 @@ export interface FeaturedProjectItem {
 
 export const featuredProjects: FeaturedProjectItem[] = [
   {
-    id: "secureid",
+    id: "habi",
     tag: "Featured Project #01",
-    title: "SecureID - Improving User Trust Through Security Notifications",
+    filterLabel: "Habi",
+    title: "habi. - A Thoughtful Habit Tracker",
     description:
-      "A comprehensive UX/UI design case study focusing on user trust, authentication alerts, and intuitive notification patterns in security-critical flows.",
-    link: "https://www.figma.com/design/sChGDXiAvQrSbjsxkRLiaF/SecureID?node-id=5-51&t=qDZ2qUiAlG1LVeXJ-1",
-    linkText: "View Case Study",
-    isGithub: false,
+      "A mobile habit tracker concept that makes daily progress feel rewarding. Includes welcome, daily check-in, insights, milestones, achievements, and a visual system in light and dark themes.",
+    link: "/images/habi-light.webp",
+    linkText: "View Screenshots",
     slides: [
       {
-        src: "/images/main-project.webp",
-        alt: "SecureID - Main Dashboard",
-        caption: "Main Dashboard UI",
-        aspectClass: "aspect-square",
+        src: "/images/habi-light.webp",
+        alt: "Habi habit tracker screens in the light theme",
+        caption: "Light Theme · Five App Screens",
+        aspectClass: "aspect-[33/17]",
         priority: true,
       },
       {
-        src: "/images/main-project-2.webp",
-        alt: "SecureID - Security Notifications",
-        caption: "Security Notification Workflows",
-        aspectClass: "aspect-square",
-      },
-    ],
-  },
-  {
-    id: "smart-home",
-    tag: "Featured Project #02",
-    title: "Smart Home - Mobile UI & Icon Component System",
-    description:
-      "Interactive mobile smart home prototype featuring multi-room device controls, lighting presets, temperature adjustments, and a custom icon set crafted across 3 optical sizes (16px, 24px, 32px).",
-    link: "https://github.com/mashank12/smart-home",
-    linkText: "View on GitHub",
-    isGithub: true,
-    slides: [
-      {
-        src: "/images/smart-home-preview.png",
-        alt: "Smart Home - Mobile UI & Icon Component Documentation",
-        caption: "Mobile UI Screens & Icon Component Documentation",
-        aspectClass: "aspect-[16/10]",
+        src: "/images/habi-dark.webp",
+        alt: "Habi habit tracker screens in the dark theme",
+        caption: "Dark Theme · Five App Screens",
+        aspectClass: "aspect-[33/17]",
       },
       {
-        src: "/images/smart-home-living-room.png",
-        alt: "Smart Home - 3D Living Room Environment",
-        caption: "3D Living Room Environment Asset",
-        aspectClass: "aspect-[16/10]",
+        src: "/images/habi-design-system.webp",
+        alt: "Habi visual design system with typography, colors, and components",
+        caption: "Typography, Color & Component System",
+        aspectClass: "aspect-[33/13]",
       },
     ],
   },
   {
     id: "climate-control",
-    tag: "Featured Project #03",
+    tag: "Featured Project #02",
+    filterLabel: "DriveSync",
     title: "DriveSync - Connected Car Climate Control",
     description:
       "Connected-car climate control interface and design system for Accenture. Includes remote pre-conditioning, multi-zone HVAC controls, custom iconography guidelines, a 3-screen onboarding illustration set, and interactive micro-animations.",
@@ -109,10 +93,61 @@ export const featuredProjects: FeaturedProjectItem[] = [
       },
     ],
   },
+  {
+    id: "secureid",
+    tag: "Featured Project #03",
+    filterLabel: "SecureID",
+    title: "SecureID - Improving User Trust Through Security Notifications",
+    description:
+      "A comprehensive UX/UI design case study focusing on user trust, authentication alerts, and intuitive notification patterns in security-critical flows.",
+    link: "https://www.figma.com/design/sChGDXiAvQrSbjsxkRLiaF/SecureID?node-id=5-51&t=qDZ2qUiAlG1LVeXJ-1",
+    linkText: "View Case Study",
+    slides: [
+      {
+        src: "/images/main-project.webp",
+        alt: "SecureID - Main Dashboard",
+        caption: "Main Dashboard UI",
+        aspectClass: "aspect-square",
+      },
+      {
+        src: "/images/main-project-2.webp",
+        alt: "SecureID - Security Notifications",
+        caption: "Security Notification Workflows",
+        aspectClass: "aspect-square",
+      },
+    ],
+  },
+  {
+    id: "smart-home",
+    tag: "Featured Project #04",
+    filterLabel: "Smart Home",
+    title: "Smart Home - Mobile UI & Icon Component System",
+    description:
+      "Interactive mobile smart home prototype featuring multi-room device controls, lighting presets, temperature adjustments, and a custom icon set crafted across 3 optical sizes (16px, 24px, 32px).",
+    link: "https://github.com/mashank12/smart-home",
+    linkText: "View on GitHub",
+    isGithub: true,
+    slides: [
+      {
+        src: "/images/smart-home-mobile.webp",
+        alt: "Smart Home app home and lighting control screens",
+        caption: "Home Dashboard & Lighting Control",
+        aspectClass: "aspect-[10/9]",
+      },
+      {
+        src: "/images/smart-home-living-room.png",
+        alt: "Smart Home - 3D Living Room Environment",
+        caption: "3D Living Room Environment Asset",
+        aspectClass: "aspect-[16/10]",
+      },
+    ],
+  },
 ];
 
 export function FeaturedProject() {
   const [selectedFilter, setSelectedFilter] = useState<string>("all");
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+  const projectHref = (link: string) => link.startsWith("/") ? `${basePath}${link}` : link;
 
   const displayedProjects =
     selectedFilter === "all"
@@ -153,11 +188,7 @@ export function FeaturedProject() {
                     : "bg-secondary text-muted-foreground hover:text-foreground"
                 }`}
               >
-                {p.id === "secureid"
-                  ? "SecureID"
-                  : p.id === "smart-home"
-                  ? "Smart Home"
-                  : "DriveSync"}
+                {p.filterLabel}
               </button>
             ))}
           </div>
@@ -186,7 +217,7 @@ export function FeaturedProject() {
 
                   <a
                     className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-foreground text-background text-sm font-medium hover:bg-foreground/90 transition-colors flex-shrink-0"
-                    href={project.link}
+                    href={projectHref(project.link)}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -207,7 +238,7 @@ export function FeaturedProject() {
                     key={sIdx}
                     target="_blank"
                     rel="noopener noreferrer"
-                    href={project.link}
+                    href={project.link.startsWith("/") ? projectHref(slide.src) : project.link}
                     className={`relative h-[320px] sm:h-[400px] md:h-[480px] lg:h-[520px] ${aspect} flex-shrink-0 rounded-2xl overflow-hidden bg-secondary group border border-border/40 hover:border-border transition-colors`}
                   >
                     <Image
